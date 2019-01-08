@@ -1,0 +1,30 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <virtualType name="Test\Db\Model\TopicsProcessor" type="Magento\Framework\Api\SearchCriteria\CollectionProcessor">
+        <arguments>
+            <argument name="processors" xsi:type="array">
+                <item name="sorting" xsi:type="object">Magento\Framework\Api\SearchCriteria\CollectionProcessor\SortingProcessor</item>
+                <item name="filters" xsi:type="object">Test\Db\Model\CustomFilter</item>
+                <item name="pagination" xsi:type="object">Magento\Framework\Api\SearchCriteria\CollectionProcessor\PaginationProcessor</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Test\Db\Model\TopicsRepository">
+        <arguments>
+            <argument name="collectionProcessor" xsi:type="object">Test\Db\Model\TopicsProcessor</argument>
+        </arguments>
+    </type>
+    <preference for="Test\Db\Api\TopicRepositoryInterface" type="Test\Db\Model\TopicsRepository" />
+    <virtualType name="Test\Db\Model\CustomFilter" type="Magento\Framework\Api\SearchCriteria\CollectionProcessor\FilterProcessor">
+        <arguments>
+            <argument name="customFilters" xsi:type="array">
+                <item name="name" xsi:type="object">Test\Db\Api\SearchCriteria\CollectionProcessor\FilterProcessor\CustomFilterProccessor</item>
+            </argument>
+        </arguments>
+    </virtualType>
+</config>
+
+<!--<argument name="processors" xsi:type="array">-->
+    <!--<item name="filters" xsi:type="object">Magento\Catalog\Model\Api\SearchCriteria\CollectionProcessor\ProductFilterProcessor</item>-->
+    <!--<item name="sorting" xsi:type="object">Magento\Framework\Api\SearchCriteria\CollectionProcessor\SortingProcessor</item>-->
+    <!--<item name="pagination" xsi:type="object">Magento\Framework\Api\SearchCriteria\CollectionProcessor\PaginationProcessor</item>-->
+<!--</argument>-->

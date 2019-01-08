@@ -1,0 +1,12 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="custom_xsd.xsd">
+    <test_element_list name="ttttt">
+        <test_element name="list_name">
+            <element_data name="test_d">
+                <name name="test">aaaa</name>
+                <code name="test1">bbbbb</code>
+            </element_data>
+        </test_element>
+    </test_element_list>
+</config>

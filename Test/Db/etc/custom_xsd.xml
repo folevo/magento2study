@@ -1,0 +1,12 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Test_AllXmlFiles:etc/custom_xsd.xsd">
+    <test_element_list name="lis_name1">
+        <test_element name="list_name1">
+            <element_data name="test_d1">
+                <name name="test1">aaaa</name>
+                <code name="test2">bbbbb</code>
+            </element_data>
+        </test_element>
+    </test_element_list>
+</config>

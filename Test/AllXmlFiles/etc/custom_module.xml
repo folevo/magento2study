@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<note xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Test_AllXmlFiles:etc/custom_scheme.xsd"  vv="Z" vv2="true">
+    <to>Tove</to>
+    <from>Jani</from>
+    <heading>Напоминание</heading>
+    <body>Не забудь обо мне в эти выходные!</body>
+    <cv>sadsad</cv>
+    <age>119</age>
+    <letter>a</letter>
+    <car>Audi</car>
+    <initials>ANB</initials>
+    <address>NNN 12</address>
+    <employee>
+        <firstname>aaaa</firstname>
+        <firstname>aaaa</firstname>
+        <firstname>aaaa</firstname>
+        <firstname>aaaa</firstname>
+        <firstname>aaaa</firstname>
+        <firstname>aaaa</firstname>
+        <firstname>aaaa</firstname>
+        <firstname>aaaa</firstname>
+        <lastname>bbb</lastname>
+    </employee>
+    <student>
+        <firstname>aa</firstname>
+        <firstname>aa</firstname>
+        <lastname>aa</lastname>
+    </student>
+    <pp>
+        <firstname>ss</firstname>
+        <firstname>ss</firstname>
+        <lastname>ss</lastname>
+        <city>ss</city>
+        <country>ss</country>
+    </pp>
+    <product prodid="1345" />
+    <shoesize country="USA">123</shoesize>
+    <texaCompl>
+        ssssssssssss
+        <vvvss>sss</vvvss>
+    </texaCompl>
+    <all_test>
+        <lastname>aaa</lastname>
+        <firstname>aaa</firstname>
+    </all_test>
+    <choice_test>
+        <lastname>aaa</lastname>
+    </choice_test>
+    <test_group>
+        <firstname>aa</firstname>
+        <lastname>aa</lastname>
+        <country>aa</country>
+    </test_group>
+    <person firstname="nnn" />
+</note>

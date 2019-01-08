@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <!--<update id="Magento_Catalog::catalog_products" translate="title" title="Product Update" action="test/index/show"-->
+                <!--parent="Test_AllXmlFiles::nnnn" resource="Test_AllXmlFiles::nnnn" dependsOnConfig="gomage_navigation/general/enable" toolTip="toolTip test" />-->
+        <!--<remove id="Magento_Catalog::catalog_products" />-->
+        <add id="Test_AllXmlFiles::nnnn" module="Test_AllXmlFiles" title="Test Acl Parent" sortOrder="51" resource="Test_AllXmlFiles::allXmlFiles" />
+        <add id="Test_AllXmlFiles::nnn1" module="Test_AllXmlFiles" title="Test Acl Children" resource="Test_AllXmlFiles::allXmlFiles2" parent="Test_AllXmlFiles::nnnn" />
+        <add id="Test_AllXmlFiles::nnn2" action="test/index/index" module="Test_AllXmlFiles" title="Test Acl Children1" resource="Test_AllXmlFiles::allXmlFiles2" parent="Test_AllXmlFiles::nnn1" />
+        <add id="Test_AllXmlFiles::nnn3" title="Tets Catalog Attribute" module="Test_AllXmlFiles" resource="Test_AllXmlFiles::allXmlFiles2" target="_blank" parent="Test_AllXmlFiles::nnnn" action="test/index/show" />
+    </menu>
+</config>

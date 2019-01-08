@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <attribute name="class" value="my-css-class"/>
+        <attribute name="ppp" value="test"/>
+        <referenceContainer name="columns" >
+            <container name="custom_test_container"
+                                                      after="div.sidebar.additional"
+                                                      label="test container"
+                                                      htmlClass="test_container"
+                                                      htmlId="test_container"
+                                                      output="1"
+                                                      htmlTag="div"
+
+        >
+            <block  class="Test\RenderFlow\Block\ExampleBlock1" name="test.block" cacheable="false" >
+                <arguments>
+                    <argument name="test_args" xsi:type="string">tttttt</argument>
+                </arguments>
+                <action method="setTemplate"><argument name="template" xsi:type="string">Test_RenderFlow::example_test.phtml</argument></action>
+            </block>
+            <referenceBlock name="test.block">
+                <block  class="Test\RenderFlow\Block\ExampleBlock2" name="test.block2" cacheable="false">
+                    <action method="setTemplate"><argument name="template" xsi:type="string">Test_RenderFlow::example_test.phtml</argument></action>
+                    <action method="initTemplateVars">
+                        <argument name="data" xsi:type="array">
+                            <item name="a" xsi:type="string">10</item>
+                            <item name="b" xsi:type="string">3</item>
+                        </argument>
+
+                    </action>
+                </block>
+            </referenceBlock>
+                <block name="without_name" template="Test_RenderFlow::without_name.phtml" before="-" after="-" />
+                <block  class="Test\RenderFlow\Block\ExampleBlock2" name="test.block3" cacheable="false">
+                    <arguments>
+                        <argument name="object" xsi:type="object">Test\RenderFlow\Helper\Data</argument>
+                    </arguments>
+                    <action method="setTemplate"><argument name="template" xsi:type="string">Test_RenderFlow::example_test.phtml</argument></action>
+                    <action method="initTemplateVars">
+                        <argument name="data" xsi:type="array">
+                            <item name="a" xsi:type="string">10</item>
+                            <item name="b" xsi:type="string">3</item>
+                        </argument>
+                    </action>
+                    <action method="initObject">
+                        <argument name="object" xsi:type="object">Test\RenderFlow\Helper\Data</argument>
+                        <argument name="compositeParams" xsi:type="array">
+                            <item  name="testConst" xsi:type="const">Magento\Framework\App\Cache\Type\Block::TYPE_IDENTIFIER</item>
+                            <!-- GENERATE REST URL -->
+                            <item name="testurl" xsi:type="serviceUrl" path="renderFlow/index/index" />
+                            <item name="testBool" xsi:type="boolean">true</item>
+                            <item name="testNumber" xsi:type="number">1000</item>
+                            <item name="testString" xsi:type="string">text test</item>
+                            <item name="testNull" xsi:type="null" />
+                            <item name="testUrlSimple" xsi:type="url" path="renderFlow/index/index">
+                                <param name="string">string</param>
+                            </item>
+                            <item name="testUrlrest" xsi:type="url" path="renderFlow/index/index" />
+                            <item name="testOption" xsi:type="options" model="Test\RenderFlow\Block\OptionBlock\Options" />
+                            <item name="testHelper" xsi:type="helper" helper="Test\RenderFlow\Helper\Data::getValueArgument" />
+                        </argument>
+                    </action>
+                </block>
+        </container>
+        </referenceContainer>
+        <block  class="Test\RenderFlow\Block\ExampleBlock1" name="test.block1" cacheable="false">
+            <arguments>
+                <argument name="test_args" xsi:type="string">tttttt</argument>
+            </arguments>
+            <action method="setTemplate"><argument name="template" xsi:type="string">Test_RenderFlow::example_test.phtml</argument></action>
+        </block>
+        <move element="test.block1" destination="header.panel" />
+    </body>
+</page>

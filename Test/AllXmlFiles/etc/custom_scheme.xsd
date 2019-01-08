@@ -1,0 +1,142 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:sx="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="name" type="xs:string" block="substitution"/>
+    <xs:element name="navn" substitutionGroup="name" />
+    <xs:element name="customer" type="custinfo"/>
+    <xs:element name="kunde" substitutionGroup="customer" />
+    <xs:element name="note">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="to" type="xs:string" />
+                <xs:element name="from" type="xs:string" />
+                <xs:element name="heading" type="xs:string" />
+                <xs:element name="body" type="xs:string" />
+                <xs:element name="cv" type="xs:string" />
+                <xs:element name="age">
+                    <xs:simpleType>
+                        <xs:restriction base="xs:integer">
+                            <xs:minExclusive value="0" />
+                            <xs:maxExclusive value="120" />
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+                <xs:element name="letter">
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:pattern value="[a-z]" />
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+                <xs:element name="car" type="carType"/>
+                <xs:element name="initials">
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:pattern value="[A-Z][A-Z][A-Z]" />
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+                <xs:element name="address">
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:whiteSpace value="preserve" />
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+                <xs:element name="employee" type="info" />
+                <xs:element name="student" type="info" />
+                <xs:element name="pp" type="infoextend" />
+                <xs:element name="product" type="productId" />
+                <xs:element name="shoesize" type="extendInt" />
+                <xs:element name="texaCompl" type="testCompl" />
+                <xs:element name="all_test" type="allTest" />
+                <xs:element name="choice_test" type="choice_test" />
+                <xs:element name="test_group" type="test_group" />
+                <xs:element name="person">
+                    <xs:complexType>
+                        <xs:attributeGroup ref="group_attr"/>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+            <xs:attribute name="vv" type="xs:string"  default="Y" />
+            <xs:attribute name="vv1" type="xs:integer" fixed="12" />
+            <xs:attribute name="vv2" type="xs:boolean" use="required" />
+        </xs:complexType>
+    </xs:element>
+    <xs:simpleType name="carType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Audi" />
+            <xs:enumeration value="Bmw" />
+            <xs:enumeration value="WW" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:complexType name="info">
+        <xs:sequence>
+            <xs:element name="firstname" type="xs:string" minOccurs="2" maxOccurs="unbounded" />
+            <xs:element name="lastname" type="xs:string" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="infoextend">
+        <xs:complexContent>
+            <xs:extension base="info">
+                <xs:sequence>
+                    <xs:element name="city" type="xs:string" />
+                    <xs:element name="country" type="xs:string" />
+                    <xs:any minOccurs="0" />
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="productId">
+        <xs:complexContent>
+            <xs:restriction base="xs:integer">
+                <sx:attribute name="prodid" type="xs:positiveInteger" />
+            </xs:restriction>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="extendInt">
+        <xs:simpleContent>
+            <xs:extension base="xs:integer">
+                <xs:attribute name="country" type="xs:string" />
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:complexType name="testCompl" mixed="true">
+        <xs:sequence>
+            <xs:element name="vvvss" type="xs:string" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="allTest">
+        <xs:all>
+            <xs:element name="firstname" type="xs:string" />
+            <xs:element name="lastname" type="xs:string" />
+        </xs:all>
+    </xs:complexType>
+    <xs:complexType name="choice_test">
+        <xs:choice>
+            <xs:element name="firstname" type="xs:string" />
+            <xs:element name="lastname" type="xs:string" />
+        </xs:choice>
+    </xs:complexType>
+    <xs:group name="persongroup">
+        <xs:sequence>
+            <xs:element name="firstname" type="xs:string"/>
+            <xs:element name="lastname" type="xs:string" />
+        </xs:sequence>
+    </xs:group>
+    <xs:complexType name="test_group">
+        <xs:sequence>
+            <xs:group ref="persongroup" />
+            <xs:element name="country" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="custinfo">
+        <xs:sequence>
+            <xs:element ref="name"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:attributeGroup name="group_attr">
+        <xs:attribute name="firstname" type="xs:string"/>
+        <xs:attribute name="lastname" type="xs:string"/>
+        <xs:attribute name="birthday" type="xs:date"/>
+    </xs:attributeGroup>
+</xs:schema>

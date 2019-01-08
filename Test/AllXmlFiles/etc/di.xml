@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Test\AllXmlFiles\Model\Export\RowsInterface" type="Test\AllXmlFiles\Model\Export\Rows\Rows" />
+    <type name="Magento\Catalog\Helper\Product\Flat\Indexer">
+        <arguments>
+            <argument name="flatAttributeGroups" xsi:type="array">
+                <item name="my_custom_group" xsi:type="string">my_custom_group</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="XsdReader" type="Test\AllXmlFiles\Model\Config\Reader">
+        <arguments>
+            <argument name="converter" xsi:type="object">Test\AllXmlFiles\Model\Config\Converter</argument>
+            <argument name="schemaLocator" xsi:type="object">Test\AllXmlFiles\Model\Config\SchemaLocator</argument>
+            <argument name="fileName" xsi:type="string">custom_xsd.xml</argument>
+        </arguments>
+    </virtualType>
+    <type name="Test\AllXmlFiles\Model\Config\Data">
+        <arguments>
+            <argument name="reader" xsi:type="object">XsdReader</argument>
+            <argument name="cacheId" xsi:type="string">custom_xsd</argument>
+        </arguments>
+    </type>
+</config>

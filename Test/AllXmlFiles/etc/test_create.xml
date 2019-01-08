@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root xmlns:example="namespaceUri" xml:id="ppppp"><ppp:u xmlns:ppp="http://www.example.com/XFoo1"><ppp:test_child>ccccc</ppp:test_child><ppp:a>xxx</ppp:a></ppp:u><tag example:attr="aaaa"><a>1111</a>
+//<![CDATA[
+hui sanek
+//]]><!--This contains -- some weird -- characters.--><pp>1111</pp></tag><books>
+ <book>Шаблоны корпоративных приложений</book>
+ <book>Приёмы объектно-ориентированного проектирования. Паттерны проектирования</book>
+ <book>Чистый код</book>
+</books></root>
+<xpp:u xmlns:xpp="http://www.example.com/XFoo">test ns element&copy;<test_child>ccccc</test_child></xpp:u>
+<?hui-pidar-node type="text/xsl" href="base.xsl"?>

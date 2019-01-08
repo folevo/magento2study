@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Test_Db::test_db" title="Test Db" module="Test_Db" resource="Test_Db::test_db" translate="title" parent="Test_AllXmlFiles::nnnn" action="testdb/index/index" />
+    </menu>
+</config>

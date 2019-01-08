@@ -1,0 +1,45 @@
+<?xml version="1.0" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="config">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="1" maxOccurs="unbounded" name="test_element_list" type="test_element_list" />
+            </xs:sequence>
+        </xs:complexType>
+        <xs:unique name="uniqueElementList">
+            <xs:annotation>
+                <xs:documentation>
+                    Module name must be unique.
+                </xs:documentation>
+            </xs:annotation>
+            <xs:selector xpath="test_element_list"/>
+            <xs:field xpath="@name"/>
+        </xs:unique>
+    </xs:element>
+    <xs:complexType name="test_element_list">
+        <xs:sequence>
+            <xs:element name="test_element" minOccurs="1" maxOccurs="unbounded" type="test_element" />
+        </xs:sequence>
+        <xs:attribute name="name"  use="required" />
+    </xs:complexType>
+    <xs:complexType name="test_element">
+        <xs:sequence>
+            <xs:element name="element_data" type="element_data" minOccurs="1" maxOccurs="unbounded" />
+        </xs:sequence>
+        <xs:attribute name="name" type="xs:string" use="required"/>
+    </xs:complexType>
+    <xs:complexType name="element_data">
+        <xs:sequence>
+            <xs:element minOccurs="1" maxOccurs="unbounded" name="name" type="atrribuyte_name" />
+            <xs:element minOccurs="1" maxOccurs="unbounded"  name="code" type="atrribuyte_name"  />
+        </xs:sequence>
+        <xs:attribute name="name" type="xs:string" use="required"/>
+    </xs:complexType>
+    <xs:complexType name="atrribuyte_name">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute name="name" type="xs:string" use="required"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+</xs:schema>

@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<include xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_include.xsd">
+        <group id="include_test_group" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label">
+            <label>xxxxx</label>
+            <field id="ppppp111" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                <label>ppppp111</label>
+            </field>
+        </group>
+</include>

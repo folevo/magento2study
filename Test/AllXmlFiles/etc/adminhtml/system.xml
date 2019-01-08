@@ -1,0 +1,174 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Location: magento2_root/app/code/Vendorname/Extensionname/etc/adminhtml/system.xml
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="example_tab" sortOrder="1" translate="label" class="example-class" >
+            <label>Example tab</label>
+        </tab>
+        <section id="example_section"  showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="1001" translate="label" type="text" advanced="false">
+            <header_css>header-css</header_css>
+            <label>Example Section</label>
+            <tab>example_tab</tab>
+            <resource>Test_AllXmlFiles::allXmlFiles</resource>
+            <group id="example_group" showInDefault="1" showInStore="1"  showInWebsite="1" sortOrder="10" translate="label" type="text">
+                <field id="place" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show Shop By In</label>
+                    <source_model>GoMage\Navigation\Model\Config\Source\Place</source_model>
+                </field>
+                <!--<hide_in_single_store_mode>1</hide_in_single_store_mode>-->
+                <clone_fields>1</clone_fields>
+                <clone_model>Test\AllXmlFiles\Model\ExampleClone\ExampleCloneModel</clone_model>
+                <comment><![CDATA[When sending a campaign that uses template personalisation, a default value ensures that a value is always displayed even if a data field is blank.]]></comment>
+                <more_url>https://www.signifyd.com/magento-guaranteed-fraud-protection</more_url>
+                <help_url>ads/mmm/ss</help_url>
+                <!--<frontend_model>Test\AllXmlFiles\Block\Aminhtml\Config\ExampleFrontendModel</frontend_model>-->
+                <fieldset_css>test css-class-example</fieldset_css>
+                <label>Example system xml</label>
+                <field id="ppp" translate="label comment" type="text" sortOrder="20" showInDefault="1">
+                    <label>ppp</label>
+                    <!--<frontend_model>Test\AllXmlFiles\Block\Aminhtml\Config\ExampleFrontendModel</frontend_model>-->
+                </field>
+            </group>
+            <group id="children_custom" showInDefault="1" showInStore="1"  showInWebsite="1" sortOrder="10" translate="label">
+                <label>SSSSSSSSS</label>
+                <field id="pp3" type="editor" showInDefault="1" translate="label" advanced="true" canRestore="1">
+                    <label>ppp3</label>
+                </field>
+                <!--<attribute type="expanded">0</attribute>-->
+                <field id="pp2" type="editablemultiselect" showInDefault="1" translate="label" advanced="true">
+                    <label>ppp2</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="pp6" type="checkbox" showInDefault="1" translate="label" advanced="true" canRestore="1">
+                    <label>ppp6</label>
+                </field>
+                <field id="pp5" type="checkboxes" showInDefault="1" translate="label" advanced="true" canRestore="1">
+                    <label>ppp5</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="pp4" type="fieldset" showInDefault="1" translate="label" advanced="true">
+                    <label>ppp4</label>
+                </field>
+                <field id="ppp1" translate="label" type="text" sortOrder="20" showInDefault="1" >
+                    <label>ppp1</label>
+                    <requires><field id="ppp1" /></requires>
+                    <!--<frontend_model>Test\AllXmlFiles\Block\Aminhtml\Config\ExampleFrontendModel</frontend_model>-->
+                </field>
+                <field id="place" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show Shop By In</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="pp7" type="file" showInDefault="1" translate="label" advanced="true" canRestore="1">
+                    <label>ppp7</label>
+                </field>
+                <field id="pp8" type="gallery" showInDefault="1" translate="label" advanced="true" canRestore="1">
+                    <label>ppp8</label>
+                </field>
+                <field id="pp9" type="gallery" showInDefault="1" translate="label" advanced="true" canRestore="1">
+                    <label>ppp9</label>
+                </field>
+                <field id="ppp10" translate="label comment" type="hidden" sortOrder="20" showInDefault="1" >
+                </field>
+                <field id="pp11" type="image" showInDefault="1" translate="label" advanced="true" canRestore="1">
+                    <upload_dir  scope_info="1">catalog/product/placeholder</upload_dir>
+                </field>
+                <field id="pp12" type="imagefile" showInDefault="1" translate="label" advanced="true" canRestore="1">
+                    <label>ppp12</label>
+                </field>
+                <field id="pp13" type="label" showInDefault="1" translate="label" advanced="true" canRestore="1">
+                    <label>ppp13</label>
+                </field>
+                <field id="pp14" type="label" showInDefault="1" translate="label" advanced="true" canRestore="1">
+                    <label>ppp13</label>
+                    <hint>Test Hint</hint>
+                </field>
+                <field id="pp15" type="link" showInDefault="1" translate="label" advanced="true" canRestore="1">
+                    <label>Links</label>
+                    <attribute type="disabled">1</attribute>
+                </field>
+                <field id="pp17" type="multiline" showInDefault="1" translate="label" advanced="true" canRestore="1">
+                    <label>Multiline</label>
+                </field>
+                <field id="pp18" type="multiselect" showInDefault="1" translate="label" advanced="true" canRestore="1">
+                    <label>Multiselect</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="p19" translate="label" type="note" sortOrder="40" showInDefault="1" showInWebsite="0" showInStore="0" canRestore="1">
+                    <label>Note</label>
+
+                </field>
+                <field id="p20" translate="label" type="obscure" sortOrder="40" showInDefault="1" showInWebsite="0" showInStore="0" canRestore="1">
+                    <label>Password</label>
+
+                </field>
+                <field id="p21" translate="label" type="password" sortOrder="40" showInDefault="1" showInWebsite="0" showInStore="0" canRestore="1">
+                    <label>Password</label>
+
+                </field>
+                <field id="p22" translate="label" type="radio" sortOrder="40" showInDefault="1" showInWebsite="0" showInStore="0" canRestore="1">
+                    <label>Radio</label>
+                    <attribute type="tooltip">1</attribute>
+                </field>
+                <field id="p23" translate="label" type="radios" sortOrder="40" showInDefault="1" showInWebsite="0" showInStore="0" canRestore="1">
+                    <label>Radios</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="p24" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="0" showInStore="0" canRestore="1">
+                    <hint>Test Hint</hint>
+                    <label>Radios</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="p25" translate="label" type="reset" sortOrder="40" showInDefault="1" showInWebsite="0" showInStore="0" canRestore="1">
+                    <label>Reset</label>
+                    <if_module_enabled>GoMage_Feed</if_module_enabled>
+                    <can_be_empty>0</can_be_empty>
+                </field>
+                <field id="p26" translate="label" type="submit" sortOrder="40" showInDefault="1" showInWebsite="0" showInStore="0" canRestore="1">
+                    <label>Subbmith</label>
+                    <button_label>Subbmit</button_label>
+                </field>
+                <field id="p27" translate="label" type="time" sortOrder="40" showInDefault="1" showInWebsite="0" showInStore="0" canRestore="1">
+                    <label>Start Time</label>
+                </field>
+                <field id="p28" translate="label" type="date" sortOrder="40" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Start Date</label>
+                    <hint>Test ccccc</hint>
+                    <frontend_model>Test\AllXmlFiles\Model\SourceModel\Date</frontend_model>
+                </field>
+                <field id="p29" translate="label" sortOrder="6" showInDefault="1" showInWebsite="0" showInStore="0" canRestore="1">
+                    <label>Custom Grid</label>
+                    <frontend_model>Test\AllXmlFiles\Model\FrontendModel\GridSystem</frontend_model>
+                    <backend_model>Test\AllXmlFiles\Model\BackendModel\ModelGrid</backend_model>
+                </field>
+                <field id="validate_vat_number" translate="button_label" sortOrder="62" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <button_label>Validate VAT Number</button_label>
+                    <frontend_model>Magento\Customer\Block\Adminhtml\System\Config\Validatevat</frontend_model>
+                </field>
+                <depends>
+                    <field id="example_section/children_custom/place" separator="," >0</field>
+                </depends>
+            </group>
+        </section>
+        <section id="jjjj" showInDefault="1" showInStore="0" showInWebsite="0" >
+            <tab>example_tab</tab>
+            <label>Example Section 3</label>
+            <resource>Test_AllXmlFiles::allXmlFiles</resource>
+            <include path="Test_AllXmlFiles::system/custom_file_include.xml" />
+        </section>
+        <section id="example_section1"  showInDefault="1" showInStore="0" showInWebsite="0" sortOrder="1001" translate="label" type="text" extends="example_section" canRestore="0" advanced="false">
+            <label>Example Section 1</label>
+            <resource>Test_AllXmlFiles::allXmlFiles</resource>
+            <group id="example_group_1" showInDefault="1" showInStore="0" showInWebsite="0" sortOrder="10" translate="label">
+                <label>Example system xml 1</label>
+                <field id="ppppp" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="0" showInStore="0" canRestore="1">
+                    <label>PPPPP</label>
+
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

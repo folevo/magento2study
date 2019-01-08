@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <!--<update id="Magento_Catalog::catalog_products" translate="title" title="Product Update" action="test/index/show"-->
+        <!--parent="Test_AllXmlFiles::nnnn" resource="Test_AllXmlFiles::nnnn" dependsOnConfig="gomage_navigation/general/enable" toolTip="toolTip test" />-->
+        <!--<remove id="Magento_Catalog::catalog_products" />-->
+        <add id="Test_RequestFlow::test_backend" module="Test_RequestFlow" title="Test Backend Controller" sortOrder="51" resource="Test_RequestFlow::test_backend" />
+        <add id="Test_RequestFlow::test_backend1" module="Test_RequestFlow" title="Test Acl Children" resource="Test_RequestFlow::test_backend" action="requestFlow/index/index" parent="Test_RequestFlow::test_backend" />
+    </menu>
+</config>
