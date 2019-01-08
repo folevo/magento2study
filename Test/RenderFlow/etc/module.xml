@@ -3,6 +3,7 @@
     <module name="Test_RenderFlow" setup_version="1.0.1">
         <sequence>
             <module name="Magento_Eav" />
+            <module name="Test_Db" />
         </sequence>
     </module>
 </config>

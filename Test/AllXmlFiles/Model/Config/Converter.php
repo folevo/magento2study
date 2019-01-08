@@ -80,7 +80,7 @@ XML;
         $doc->getElementsByTagName('tag')->item(0)->appendChild($attrNs);
         $tag = $doc->getElementsByTagName('tag');
         $cm = $doc->createTextNode("\n//");
-        $text= 'hui sanek';
+        $text= 'test sanek';
         $ct = $doc->createCDATASection("\n" . $text . "\n//");
         $tag->item(0)->appendChild($cm);
         $tag->item(0)->appendChild($ct);

@@ -23,7 +23,7 @@ class Index extends Action
         //$result = $this->resultFactory->create('page');
        // $result = $this->resultFactory->create('json');
         $result = $this->resultFactory->create('raw');
-        $result->setContents('hui vam');
+        $result->setContents('test vam');
        // $result->setData(['test'=> 'test']);
         return $result;
     }

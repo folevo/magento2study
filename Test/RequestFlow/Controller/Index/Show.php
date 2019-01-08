@@ -20,7 +20,7 @@ class Show extends Action
 
     public function execute()
     {
-       echo 'hui vam 2';
+       echo 'test vam 2';
        die;
     }
 }
