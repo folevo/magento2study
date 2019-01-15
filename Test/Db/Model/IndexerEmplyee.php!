@@ -1,0 +1,15 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: dimasik
+ * Date: 11.1.19
+ * Time: 16.04
+ */
+
+namespace Test\Db\Model;
+
+
+class IndexerEmplyee
+{
+
+}

@@ -23,8 +23,11 @@ use Magento\Framework\Api\SortOrderBuilder;
 use Test\Db\Model\ResourceModel\Topics;
 use Test\Db\Model\TopicsFactory;
 use Test\Db\Model\ResourceModel\Topics\CollectionFactory;
+use Test\Db\Model\ResourceModel\Report\CollectionFactory as ReportCollectionFactory;
 use Test\Db\Model\ResourceModel\Employee as EmployResource;
 use Test\Db\Model\EmployeeFactory;
+use Test\Db\Model\ResourceModel\Report;
+use Test\Db\Model\ReportFactory;
 use Test\Db\Model\AttributeFactory;
 use Magento\Eav\Model\Entity\TypeFactory;
 
@@ -44,8 +47,11 @@ class Index extends Action
     private $collectionFactory;
     private $employee;
     private $employeeFactory;
+    private $reportFactory;
+    private $reportResource;
     private $attributeFactory;
     private $typeFactory;
+    private $reportCollFactory;
 
     public function __construct(
         TopicsRepository $topicsRepository,
@@ -64,8 +70,13 @@ class Index extends Action
         EmployResource $employee,
         EmployeeFactory $employeeFactory,
         AttributeFactory $attributeFactory,
-        TypeFactory $typeFactory
+        TypeFactory $typeFactory,
+        Report $report,
+        ReportFactory $reportFactory,
+        ReportCollectionFactory $reportCollFactory
     ) {
+        $this->reportFactory = $reportFactory;
+        $this->reportResource = $report;
         $this->typeFactory = $topicsFactory;
         $this->attributeFactory = $attributeFactory;
         $this->employeeFactory = $employeeFactory;
@@ -82,6 +93,8 @@ class Index extends Action
         $this->filterFactory = $filterFactory;
         $this->searchCriteriaBuilder = $searchCriteriaBuilder;
         $this->topicsRepository = $topicsRepository;
+        $this->reportCollFactory = $reportCollFactory;
+        $this->reportCollFactory = $reportCollFactory;
         parent::__construct($context);
     }
 
@@ -375,30 +388,35 @@ class Index extends Action
 //        $this->searchCriteriaBuilder->setPageSize(1);
 //        $this->topicsRepository->getList($this->searchCriteriaBuilder->create());
 //        $result = $this->resultFactory->create(ResultFactory::TYPE_PAGE);
-        $employee = $this->employeeFactory->create();
-
-        $emp = $this->employee->load($employee,1);
-        $eavconfig = $this->employee->getConfig();
-        $entityType = $eavconfig->getEntityType('test_db_employee');
-        $attribute = $eavconfig->getAttribute('test_db_employee', 'salary');
-        $entityType->loadByCode('customer');
-        $entityType->fetchNewIncrementId(1);
-        $t = $entityType->getEntityIdField();
-        $t = $entityType->getEntityTable();
-        $t = $entityType->getAttributeSetCollection();
-        $data = $t->getData();
-        $t1 = $entityType->getValueTablePrefix();
-        $t1 = $entityType->getDefaultAttributeSetId();
-        $sql = $t->getSelectSql(true);
-        //$entityType = $this->typeFactory->create();
-        $attributeCollection = $entityType->getAttributeCollection(17);
-        $data = $attributeCollection->getData();
-        $sql = $attributeCollection->getSelectSql(true);
-       // $t = $eavconfig->getAttribute('test_db_employee','salary');
-        $setAttribute = new \Magento\Framework\DataObject(['p'=>1,'k'=>1]);
-        $eavconfig->getAttributes($eavconfig->getEntityType('customer'), $setAttribute);
-        $attribute = $this->attributeFactory->create();
-        $attribute->setWebsite(1);
+//        $employee = $this->employeeFactory->create();
+//
+//        $emp = $this->employee->load($employee,1);
+//
+//        $eavconfig = $this->employee->getConfig();
+//        $entityType = $eavconfig->getEntityType('test_db_employee');
+//        $attribute = $eavconfig->getAttribute('test_db_employee', 'salary');
+//        $entityType->loadByCode('customer');
+//        $entityType->fetchNewIncrementId(1);
+//        $t = $entityType->getEntityIdField();
+//        $t = $entityType->getEntityTable();
+//        $t = $entityType->getAttributeSetCollection();
+//        $data = $t->getData();
+//        $t1 = $entityType->getValueTablePrefix();
+//        $t1 = $entityType->getDefaultAttributeSetId();
+//        $sql = $t->getSelectSql(true);
+//        //$entityType = $this->typeFactory->create();
+//        $attributeCollection = $entityType->getAttributeCollection(17);
+//        $data = $attributeCollection->getData();
+//        $sql = $attributeCollection->getSelectSql(true);
+//       // $t = $eavconfig->getAttribute('test_db_employee','salary');
+//        $setAttribute = new \Magento\Framework\DataObject(['p'=>1,'k'=>1]);
+//        $eavconfig->getAttributes($eavconfig->getEntityType('customer'), $setAttribute);
+//        $attribute = $this->attributeFactory->create();
+//        $attribute->setWebsite(1);
+        $report = $this->reportFactory->create();
+        $this->reportResource->load($report, 13, ['test_int']);
+        $reportColl = $this->reportCollFactory->create();
+        $reportColl->addAttributeToFilter('test_int', 1);
         die;
         //$eavconfig->getEntityAttributeCodes('test_db_employee');
         //return $result;

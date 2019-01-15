@@ -4,6 +4,7 @@
         <sequence>
             <module name="Magento_Eav" />
             <module name="Test_Db" />
+            <module name="Test_AllXmlFiles" />
         </sequence>
     </module>
 </config>

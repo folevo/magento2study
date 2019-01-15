@@ -8,15 +8,10 @@
 
 namespace Test\RenderFlow\Controller\Index;
 
-use Magento\Framework\App\Action\Action;
-use Magento\Framework\App\Action\Context;
+use Magento\Backend\App\Action;
+
 class Index extends Action
 {
-    public function __construct(
-        Context $context
-    ) {
-        parent::__construct($context);
-    }
 
     public function execute()
     {

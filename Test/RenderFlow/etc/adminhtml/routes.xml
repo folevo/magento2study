@@ -1,6 +1,6 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd">
     <router id="admin">
-        <route id="renderFlow" frontName="renderFlow">
+        <route id="renderAdmin" frontName="renderAdmin">
             <module name="Test_RenderFlow" before="Magento_Backend" />
         </route>
     </router>

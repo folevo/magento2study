@@ -15,4 +15,9 @@ class Collection extends \Magento\Eav\Model\Entity\Collection\AbstractCollection
     {
         $this->_init(\Test\Db\Model\Employee::class, \Test\Db\Model\ResourceModel\Employee::class);
     }
+
+    public function getTotalCount()
+    {
+        return $this->getSize();
+    }
 }

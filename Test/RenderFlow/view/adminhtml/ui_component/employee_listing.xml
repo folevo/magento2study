@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">employee_listing.employee_listing_data_source</item>
+        </item>
+    </argument>
+    <settings>
+        <buttons>
+            <button name="add">
+                <url path="renderAdmin/index/employee"/>
+                <class>primary</class>
+                <label translate="true">Add New Employee</label>
+            </button>
+        </buttons>
+        <spinner>employee_listing_columns</spinner>
+        <deps>
+            <dep>employee_listing.employee_listing_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="employee_listing_data_source" component="Magento_Ui/js/grid/provider">
+        <settings>
+            <updateUrl path="mui/index/render"/>
+        </settings>
+        <dataProvider class="Test\RenderFlow\UI\DataProvider" name="employee_listing_data_source">
+            <settings>
+                <requestFieldName>entity_id</requestFieldName>
+                <primaryFieldName>entity_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+
+    <listingToolbar name="listing_top" >
+        <settings>
+            <sticky>true</sticky>
+        </settings>
+        <filterSearch name="first_name"/>
+        <bookmark name="bookmarks"/>
+        <columnsControls name="columns_controls"/>
+        <exportButton name="export_button"/>
+        <massaction name="listing_massaction">
+            <action name="pdfinvoices_order">
+                <settings>
+                    <url path="sales/invoice/pdfinvoices"/>
+                    <type>pdfinvoices_order</type>
+                    <label translate="true">PDF Invoices</label>
+                </settings>
+            </action>
+            <action name="edit">
+                <settings>
+                    <callback>
+                        <target>editSelected</target>
+                        <provider>employee_listing.employee_listing.employee_listing_columns_editor</provider>
+                    </callback>
+                    <type>edit</type>
+                    <label translate="true">Edit</label>
+                </settings>
+            </action>
+        </massaction>
+        <filters name="listing_filters">
+            <settings>
+                <templates>
+                    <filters>
+                        <select>
+                            <param name="template" xsi:type="string">ui/grid/filters/elements/ui-select</param>
+                            <param name="component" xsi:type="string">Magento_Ui/js/form/element/ui-select</param>
+                        </select>
+                    </filters>
+                </templates>
+            </settings>
+        </filters>
+        <paging name="listing_paging"/>
+    </listingToolbar>
+    <columns name="employee_listing_columns" class="Test\RenderFlow\UI\Element\Columns">
+        <settings>
+            <editorConfig>
+                <param name="clientConfig" xsi:type="array">
+                    <item name="saveUrl" xsi:type="url" path="renderAdmin/index/inlineEdit"/>
+                    <item name="validateBeforeSave" xsi:type="boolean">false</item>
+                </param>
+                <param name="indexField" xsi:type="string">entity_id</param>
+                <param name="enabled" xsi:type="boolean">true</param>
+                <param name="selectProvider" xsi:type="string">employee_listing.employee_listing.employee_listing_columns.ids</param>
+            </editorConfig>
+            <childDefaults>
+                <param name="fieldAction" xsi:type="array">
+                    <item name="provider" xsi:type="string">employee_listing.employee_listing.employee_listing_columns_editor</item>
+                    <item name="target" xsi:type="string">startEdit</item>
+                    <item name="params" xsi:type="array">
+                        <item name="0" xsi:type="string">${ $.$data.rowIndex }</item>
+                        <item name="1" xsi:type="boolean">true</item>
+                    </item>
+                </param>
+            </childDefaults>
+        </settings>
+        <selectionsColumn name="ids" sortOrder="1">
+            <settings>
+                <draggable>true</draggable>
+                <indexField>entity_id</indexField>
+            </settings>
+        </selectionsColumn>
+        <column name="entity_id" sortOrder="2">
+            <!-- Попробывать select и  date range -->
+            <settings>
+                <filter>textRange</filter>
+                <label translate="true">ID</label>
+                <sorting>asc</sorting>
+            </settings>
+        </column>
+        <column name="email" sortOrder="30">
+            <settings>
+                <bodyTmpl>ui/grid/cells/html</bodyTmpl>
+                <editor>
+                    <editorType>text</editorType>
+                </editor>
+                <addField>true</addField>
+                <filter>text</filter>
+                <label translate="true">Email</label>
+            </settings>
+        </column>
+        <column name="first_name" sortOrder="30">
+            <settings>
+                <editor>
+                    <editorType>text</editorType>
+                </editor>
+                <addField>true</addField>
+                <filter>text</filter>
+                <label translate="true">First Name</label>
+            </settings>
+        </column>
+        <column name="last_name" sortOrder="30">
+            <settings>
+                <editor>
+                    <editorType>text</editorType>
+                </editor>
+                <addField>true</addField>
+                <filter>text</filter>
+                <label translate="true">Last Name</label>
+            </settings>
+        </column>
+        <actionsColumn name="actions" class="Test\RenderFlow\UI\Element\Listing\Action">
+        <!--<actionsColumn>-->
+            <settings>
+                <!--<templates>-->
+                    <!--<actions>-->
+                        <!--<action name="delete">-->
+                            <!--<label translate="true">Delete Row</label>-->
+                            <!--<confirm>-->
+                                <!--<title translate="false">Test Confirm</title>-->
+                                <!--<message translate="true">Message Confirm</message>-->
+                            <!--</confirm>-->
+                            <!--<href>entity_id/${ $.recordId }</href>-->
+                            <!--<index>1</index>-->
+                        <!--</action>-->
+                        <!--<action name="edit">-->
+                            <!--<label translate="true">Edit Row</label>-->
+                            <!--<confirm>-->
+                                <!--<title translate="false">Test edit Confirm</title>-->
+                                <!--<message translate="true">Message Confirm</message>-->
+                            <!--</confirm>-->
+                            <!--<href>renderAdmin/index/eidt/entity_id/${ $.recordId }</href>-->
+                            <!--<index>0</index>-->
+                        <!--</action>-->
+                    <!--</actions>-->
+                <!--</templates>-->
+                <fieldClass>
+                    <class name="test_calss">true</class>
+                </fieldClass>
+                <sortable>true</sortable>
+                <draggable>true</draggable>
+                <indexField>entity_id</indexField>
+            </settings>
+        </actionsColumn>
+    </columns>
+</listing>

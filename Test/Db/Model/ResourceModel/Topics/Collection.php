@@ -16,10 +16,10 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
         $this->_init(\Test\Db\Model\Topics::class, \Test\Db\Model\ResourceModel\Topics::class);
     }
 
-    public function toOptionArray()
-    {
-        return $this->_toOptionArray('dimas', 'name');
-    }
+//    public function toOptionArray()
+//    {
+//        return $this->_toOptionArray('dimas', 'name');
+//    }
 
     /**
      * @return array

@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Render_Flow::render_Flow" title="Test Render" module="Test_RenderFlow" resource="Render_Flow::render_Flow" translate="title" parent="Test_AllXmlFiles::nnnn" action="renderAdmin/index/index" />
+    </menu>
+</config>
