@@ -5,6 +5,8 @@
                 <item name="sorting" xsi:type="object">Magento\Framework\Api\SearchCriteria\CollectionProcessor\SortingProcessor</item>
                 <item name="filters" xsi:type="object">Test\Db\Model\CustomFilter</item>
                 <item name="pagination" xsi:type="object">Magento\Framework\Api\SearchCriteria\CollectionProcessor\PaginationProcessor</item>
+                <item name="join" xsi:type="object">Magento\Framework\Api\SearchCriteria\CollectionProcessor\JoinProcessor</item>
+                <item name="eav" xsi:type="object">Magento\Eav\Model\Api\SearchCriteria\CollectionProcessor\FilterProcessor</item>
             </argument>
         </arguments>
     </virtualType>
@@ -13,7 +15,32 @@
             <argument name="collectionProcessor" xsi:type="object">Test\Db\Model\TopicsProcessor</argument>
         </arguments>
     </type>
+    <type name="Magento\Framework\EntityManager\HydratorPool">
+        <arguments>
+            <argument name="hydrators" xsi:type="array">
+                <item name="Test\Db\Api\Data\ReportDataInterface" xsi:type="string">Magento\Framework\EntityManager\AbstractModelHydrator</item>
+            </argument>
+        </arguments>
+    </type>
     <preference for="Test\Db\Api\TopicRepositoryInterface" type="Test\Db\Model\TopicsRepository" />
+    <preference for="Test\Db\Api\ReportRepositoryInterface" type="Test\Db\Model\ReportRepository" />
+    <preference for="Test\Db\Api\Data\ReportDataInterface" type="Test\Db\Model\Report" />
+    <type name="Magento\Framework\EntityManager\MetadataPool">
+        <arguments>
+            <argument name="metadata" xsi:type="array">
+                <item name="Test\Db\Api\Data\ReportDataInterface" xsi:type="array">
+                    <item name="entityTableName" xsi:type="string">test_db_report_entity</item>
+                    <item name="eavEntityType" xsi:type="string">test_db_report</item>
+                    <item name="identifierField" xsi:type="string">entity_id</item>
+                </item>
+                <item name="Test\Db\Api\TopicsInterface" xsi:type="array">
+                    <item name="entityTableName" xsi:type="string">example_topics</item>
+                    <item name="identifierField" xsi:type="string">id</item>
+                </item>
+            </argument>
+
+        </arguments>
+    </type>
     <virtualType name="Test\Db\Model\CustomFilter" type="Magento\Framework\Api\SearchCriteria\CollectionProcessor\FilterProcessor">
         <arguments>
             <argument name="customFilters" xsi:type="array">
@@ -22,9 +49,3 @@
         </arguments>
     </virtualType>
 </config>
-
-<!--<argument name="processors" xsi:type="array">-->
-    <!--<item name="filters" xsi:type="object">Magento\Catalog\Model\Api\SearchCriteria\CollectionProcessor\ProductFilterProcessor</item>-->
-    <!--<item name="sorting" xsi:type="object">Magento\Framework\Api\SearchCriteria\CollectionProcessor\SortingProcessor</item>-->
-    <!--<item name="pagination" xsi:type="object">Magento\Framework\Api\SearchCriteria\CollectionProcessor\PaginationProcessor</item>-->
-<!--</argument>-->

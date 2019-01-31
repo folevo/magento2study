@@ -30,6 +30,7 @@ use Test\Db\Model\ResourceModel\Report;
 use Test\Db\Model\ReportFactory;
 use Test\Db\Model\AttributeFactory;
 use Magento\Eav\Model\Entity\TypeFactory;
+use Test\Db\Model\ReportRepository;
 
 class Index extends Action
 {
@@ -52,6 +53,7 @@ class Index extends Action
     private $attributeFactory;
     private $typeFactory;
     private $reportCollFactory;
+    private $reportRepository;
 
     public function __construct(
         TopicsRepository $topicsRepository,
@@ -73,7 +75,8 @@ class Index extends Action
         TypeFactory $typeFactory,
         Report $report,
         ReportFactory $reportFactory,
-        ReportCollectionFactory $reportCollFactory
+        ReportCollectionFactory $reportCollFactory,
+        ReportRepository $reportRepository
     ) {
         $this->reportFactory = $reportFactory;
         $this->reportResource = $report;
@@ -94,7 +97,7 @@ class Index extends Action
         $this->searchCriteriaBuilder = $searchCriteriaBuilder;
         $this->topicsRepository = $topicsRepository;
         $this->reportCollFactory = $reportCollFactory;
-        $this->reportCollFactory = $reportCollFactory;
+        $this->reportRepository = $reportRepository;
         parent::__construct($context);
     }
 
@@ -413,10 +416,31 @@ class Index extends Action
 //        $eavconfig->getAttributes($eavconfig->getEntityType('customer'), $setAttribute);
 //        $attribute = $this->attributeFactory->create();
 //        $attribute->setWebsite(1);
+
+//        $report = $this->reportFactory->create();
+//        $this->reportResource->load($report, 11);
+////        $reportColl = $this->reportCollFactory->create();
+////        $reportColl->addAttributeToFilter('test_int', 1);
+//        $report->setDataChanges(true);
+//        $report1 = $this->reportFactory->create();
+//        $report1->addData($report->getData());
+//        $this->reportResource->save($report1);
+//       $reportCollection = $this->reportCollFactory->create();
+//       $reportCollection->addAttributeToSelect('test_int', 'left');
+//       //$reportCollection->addAttributeToFilter('test_int', 3);
+//       var_dump($reportCollection->getData()); echo '<hr />';
+//       $reportCollection->load(true);
+//       foreach ($reportCollection as $item) {
+//           var_dump($item->getData());
+//       }
+        $filter1 = $this->filterBuilder->create();
         $report = $this->reportFactory->create();
-        $this->reportResource->load($report, 13, ['test_int']);
-        $reportColl = $this->reportCollFactory->create();
-        $reportColl->addAttributeToFilter('test_int', 1);
+        $report->setContent(1);
+        $report->setState(1);
+        $report->setStatus(1);
+        $report = $this->reportRepository->get(13);
+        //$this->reportRepository->save($report);
+        $this->reportRepository->delete($report);
         die;
         //$eavconfig->getEntityAttributeCodes('test_db_employee');
         //return $result;
