@@ -60,6 +60,10 @@ class ReportRepository implements ReportRepositoryInterface
     {
         $reports = $this->reportCollectionFacory->create();
         $this->collectionProcessor->process($searchCriteria, $reports);
+        $result = $this->results->create();
+        $result->setItems($reports->getItems());
+        $t = $reports->getSelectSql(true);
+        return $result;
     }
 
     public function save(ReportDataInterface $reportData)

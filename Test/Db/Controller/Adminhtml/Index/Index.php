@@ -433,14 +433,64 @@ class Index extends Action
 //       foreach ($reportCollection as $item) {
 //           var_dump($item->getData());
 //       }
-        $filter1 = $this->filterBuilder->create();
-        $report = $this->reportFactory->create();
-        $report->setContent(1);
-        $report->setState(1);
-        $report->setStatus(1);
-        $report = $this->reportRepository->get(13);
+//        $filter1 = $this->filterBuilder->setValue(5)
+//            ->setField('test_int')
+//            ->setConditionType('eq')
+//            ->create();
+//        $filter2 = $this->filterBuilder->setValue(6)
+//            ->setField('test_int')
+//            ->setConditionType('eq')
+//            ->create();
+//        $this->filterGroupBuilder
+//            ->setFilters([$filter1])
+//        ;
+        $filter1 = $this->filterBuilder->setValue(1)
+            ->setField('s')
+            ->setConditionType('eq')
+            ->create();
+        $filter2 = $this->filterBuilder->setValue(6)
+            ->setField('s')
+            ->setConditionType('eq')
+            ->create();
+        $filter3 = $this->filterBuilder->setValue(1)
+            ->setField('state')
+            ->setConditionType('eq')
+            ->create();
+        $this->filterGroupBuilder
+            ->setFilters([$filter1])
+        ;
+        $filter1GroupRes = $this->filterGroupBuilder->create();
+        $this->filterGroupBuilder
+            ->setFilters([$filter2,$filter1, $filter3])
+        ;
+        $filter2GroupRes = $this->filterGroupBuilder->create();
+//        $filter1Group = $this->filterGroupFactory->create();
+//        $filter1Group->setFilters([$filter1,$filter2]);
+//        $filter1->setConditionType('eq');
+//        $filter1->setField('status');
+//        $filter1->setValue(5);
+        //$t = $filter1->__toArray();
+//        $this->searchCriteriaBuilder->addFilters([$filter1]);
+        $this->searchCriteriaBuilder
+            ->setFilterGroups([$filter2GroupRes]);
+            //->setFilterGroups([$filter2GroupRes,$filter2GroupRes]);
+        $this->searchCriteriaBuilder->setCurrentPage(2);
+        $this->searchCriteriaBuilder->setPageSize(2);
+        $this->sortOrderBuilder->setField('entity_id');
+        $this->sortOrderBuilder->setDescendingDirection();
+        $this->searchCriteriaBuilder->addSortOrder($this->sortOrderBuilder->create());
+            //->setSortOrders([$this->sortOrderBuilder->create()]);
+        //$this->searchCriteriaBuilder->addSortOrder();
+        //$this->searchCriteriaBuilder->addFilter('test_int', '3', 'eq');
+//        $report = $this->reportFactory->create();
+//        $report->setContent(1);
+//        $report->setState(1);
+//        $report->setStatus(1);
+//        $report = $this->reportRepository->get(13);
         //$this->reportRepository->save($report);
-        $this->reportRepository->delete($report);
+//        $this->reportRepository->delete($report);
+        $result = $this->reportRepository
+            ->getList($this->searchCriteriaBuilder->create());
         die;
         //$eavconfig->getEntityAttributeCodes('test_db_employee');
         //return $result;

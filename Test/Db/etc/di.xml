@@ -10,9 +10,41 @@
             </argument>
         </arguments>
     </virtualType>
+    <virtualType name="FilterCustoms" type="Magento\Eav\Model\Api\SearchCriteria\CollectionProcessor\FilterProcessor">
+        <arguments>
+            <argument name="customFilters" xsi:type="array">
+                <item name="state" xsi:type="object">Test\Db\Api\SearchCriteria\CollectionProcessor\FilterProcessor\EavFilters</item>
+            </argument>
+            <argument name="fieldMapping" xsi:type="array">
+                <item name="s" xsi:type="string">status</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="SortDefult" type="Magento\Framework\Api\SearchCriteria\CollectionProcessor\SortingProcessor">
+        <arguments>
+            <argument name="defaultOrders" xsi:type="array">
+                <item name="status" xsi:type="string">ASC</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Test\Db\Model\ReportProcessor" type="Magento\Framework\Api\SearchCriteria\CollectionProcessor">
+        <arguments>
+            <argument name="processors" xsi:type="array">
+                <item name="sorting" xsi:type="object">SortDefult</item>
+                <item name="pagination" xsi:type="object">Magento\Framework\Api\SearchCriteria\CollectionProcessor\PaginationProcessor</item>
+                <item name="join" xsi:type="object">Magento\Framework\Api\SearchCriteria\CollectionProcessor\JoinProcessor</item>
+                <item name="filters" xsi:type="object">FilterCustoms</item>
+            </argument>
+        </arguments>
+    </virtualType>
     <type name="Test\Db\Model\TopicsRepository">
         <arguments>
             <argument name="collectionProcessor" xsi:type="object">Test\Db\Model\TopicsProcessor</argument>
+        </arguments>
+    </type>
+    <type name="Test\Db\Model\ReportRepository">
+        <arguments>
+            <argument name="collectionProcessor" xsi:type="object">Test\Db\Model\ReportProcessor</argument>
         </arguments>
     </type>
     <type name="Magento\Framework\EntityManager\HydratorPool">
