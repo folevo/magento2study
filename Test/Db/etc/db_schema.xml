@@ -18,7 +18,7 @@
                 comment="Add entity Id"
         />
         <column xsi:type="text"  name="content" nullable="true" comment="Add Content" />
-        <column xsi:type="int" name="status" padding="2" nullable="true" comment="Add Sataus" />
+        <column xsi:type="int" name="status" padding="2" nullable="true" comment="Add Status" />
         <column xsi:type="int" name="state" padding="2" nullable="true" comment="Add State"  onCreate="migrateDataFrom(status)" />
         <constraint xsi:type="primary" referenceId="PRIMARY">
             <column name="entity_id"/>
